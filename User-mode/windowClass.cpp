@@ -23,6 +23,10 @@ HWND Window::getHBtnFind(){
 	return this->hWndBtnFind;
 }
 
+HWND Window::getHListView(){
+	return this->hWndListView;
+}
+
 HWND Window::getHBtnFilter(){
 	return this->hWndBtnFilter;
 }

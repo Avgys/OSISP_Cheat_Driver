@@ -56,23 +56,16 @@ void setTextAlignment(HWND hwnd, int intTextAlignment)
 void ReportError(const char* CallingFunction)
 {
 	DWORD error = GetLastError();
-	LPVOID lpMsgBuf;
-	DWORD bufLen = FormatMessage(
-		FORMAT_MESSAGE_ALLOCATE_BUFFER |
-		FORMAT_MESSAGE_FROM_SYSTEM |
-		FORMAT_MESSAGE_IGNORE_INSERTS,
-		NULL,
-		error,
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-		(LPTSTR)&lpMsgBuf,
-		0, NULL);
-	char buf[10];
-	_ultoa_s(error, buf, 10);
-	MessageBoxA(NULL, (LPCSTR)&lpMsgBuf, buf, MB_OK);
-	wprintf(L"%S: Error '%s'\n", CallingFunction, (wchar_t*)lpMsgBuf);
+	std::string func = { CallingFunction };
+	std::wstring wfunc = { func.begin(), func.end() };
+	std::wstring buf = std::to_wstring(error);
+	using namespace std::string_literals;
+	
+	std::wstring message{ wfunc };
+	MessageBoxW(NULL, message.c_str(), buf.c_str(), MB_OK);
 }
 
-HANDLE GetProcessByName(PCWSTR name)
+DWORD GetPidByName(PCWSTR name)
 {
 	DWORD pid = 0;
 
@@ -99,7 +92,7 @@ HANDLE GetProcessByName(PCWSTR name)
 
 	if (pid != 0)
 	{
-		return OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);
+		return pid;
 	}
 
 	return NULL;

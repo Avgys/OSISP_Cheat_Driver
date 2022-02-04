@@ -18,5 +18,6 @@
 #define FONT_NAME					L"Times"
 #define TEXTEDIT_CLASS				L"edit"
 #define SetFontToControl(n,__hFont)			SendMessage((n), WM_SETFONT, (WPARAM)__hFont, 0);
-
+#define COLTEXTLENGTH 30
+#define COLNUM 2
 #define IDC_LISTVIEW                1111

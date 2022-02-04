@@ -15,8 +15,9 @@ public:
 	HWND getHBtnFilter();
 	HWND getHInputProgram();
 	HWND getHInputValue();
-	wchar_t ProgramName[320];
-	wchar_t Value[320];
+	HWND getHListView();
+	wchar_t ProgramName[320] = { 0 };
+	wchar_t Value[320] = { 0 };
 
 private:
 	Window() {
@@ -28,11 +29,13 @@ private:
 		hWndBtnFilter = NULL;
 		hWndPrompt = NULL;
 		hbrBkgnd = NULL;
+		hWndListView = NULL;
 	}
 	HFONT hFont;
 	HWND  hWnd;
 	HWND  hWndInputProgram;
 	HWND  hWndInputValue;
+	HWND  hWndListView;
 	HWND  hWndEdit;
 	HWND  hWndBtnFind;
 	HWND  hWndBtnFilter;

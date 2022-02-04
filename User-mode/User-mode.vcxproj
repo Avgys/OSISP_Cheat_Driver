@@ -78,6 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SolutionDir)$(Platform)\d\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -119,8 +121,9 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,16 +143,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="InputBox.cpp" />
-    <ClCompile Include="mainLogic.cpp" />
+    <ClCompile Include="Console.cpp" />
+    <ClCompile Include="driverLogic.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="User-mode.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="windowClass.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Console.h" />
     <ClInclude Include="InputBox.hpp" />
-    <ClInclude Include="mainLogic.hpp" />
+    <ClInclude Include="driverLogic.hpp" />
+    <ClInclude Include="Msg.hpp" />
     <ClInclude Include="stdafx.hpp" />
     <ClInclude Include="User-mode.hpp" />
     <ClInclude Include="utils.hpp" />

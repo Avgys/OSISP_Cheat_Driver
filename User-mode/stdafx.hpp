@@ -8,6 +8,8 @@
 //#include <new>
 //#include <queue>
 #include <string>
+#include <vector>
+#include <cstdint>
 //#include <sstream>
 //#include <list> 
 //#include "WinSDKVer.h"
